@@ -1,247 +1,244 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "Snow",
-    "description": "API for fildev.service-now.com",
-    "version": "0.0.0"
-  },
-  "host": "fildev.service-now.com",
-  "schemes": [
-    "https"
-  ],
-  "paths": {
-    "/api/fii/k2_api/request": {
-      "post": {
-        "tags": [
-          "Web"
-        ],
-        "description": "Request",
-        "operationId": "request",
-        "consumes": [],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "ReqRequestBody",
-            "in": "body",
-            "description": "REQ",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ReqRequestBody"
+   "swagger":"2.0",
+   "info":{
+      "title":"Snow",
+      "description":"API for fildev.service-now.com",
+      "version":"0.0.0"
+   },
+   "host":"fildev.service-now.com",
+   "schemes":[
+      "https"
+   ],
+   "paths":{
+      "/api/fii/k2_api/request":{
+         "post":{
+            "tags":[
+               "Web"
+            ],
+            "description":"Create req",
+            "operationId":"CreateREQ",
+            "consumes":[
+               "application/json"
+            ],
+            "produces":[
+               "application/json"
+            ],
+            "parameters":[
+               {
+                  "name":"REQRequest",
+                  "in":"body",
+                  "description":"REQ Request",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/REQRequest"
+                  }
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/REQResponse"
+                  }
+               }
+            },
+            "security":[
+               
+            ]
+         }
+      },
+      "/api/fii/k2_api/request_items":{
+         "post":{
+            "tags":[
+               "Web"
+            ],
+            "description":"Create ritm",
+            "operationId":"CreateRITM",
+            "consumes":[
+               "application/json"
+            ],
+            "produces":[
+               "application/json"
+            ],
+            "parameters":[
+               {
+                  "name":"RITMRequest",
+                  "in":"body",
+                  "description":"RITM Request",
+                  "required":true,
+                  "schema":{
+                     "$ref":"#/definitions/RITMRequest"
+                  }
+               }
+            ],
+            "responses":{
+               "200":{
+                  "description":"OK",
+                  "schema":{
+                     "$ref":"#/definitions/RITMResponse"
+                  }
+               }
+            },
+            "security":[
+               
+            ]
+         }
+      }
+   },
+   "definitions":{
+      "REQResponseResult":{
+         "description":"Model for Result",
+         "required":[
+            "request"
+         ],
+         "properties":{
+            "request":{
+               "type":"string"
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ReqResponeBody"
+         }
+      },
+      "RITMResponseResult":{
+         "description":"Model for Result",
+         "required":[
+            "requested_items"
+         ],
+         "properties":{
+            "requested_items":{
+               "type":"array",
+               "items":{
+                  "type":"string"
+               }
             }
-          }
-        },
-        "security": []
-      }
-    },
-    "/api/fii/k2_api/request_items": {
-      "post": {
-        "tags": [
-          "Web"
-        ],
-        "description": "Ritm",
-        "operationId": "ritm",
-        "consumes": [],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "RitmRequestBody",
-            "in": "body",
-            "description": "ritm",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/RitmRequestBody"
+         }
+      },
+      "RITMResponse":{
+         "description":"Model for RitmResponse",
+         "required":[
+            "result"
+         ],
+         "properties":{
+            "result":{
+               "$ref":"#/definitions/RITMResponseResult"
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/RitmResponseBody"
+         }
+      },
+      "RIMTRequestdetails":{
+         "description":"Model for RequestedItems",
+         "required":[
+            "cat_item"
+         ],
+         "properties":{
+            "cat_item":{
+               "type":"string"
+            },
+            "company":{
+               "type":"string"
+            },
+            "item":{
+               "type":"array",
+               "items":{
+                  "type":"string"
+               }
+            },
+            "preferred_delivery_date":{
+               "type":"string"
+            },
+            "site":{
+               "type":"string"
+            },
+            "u_city":{
+               "type":"string"
+            },
+            "u_country":{
+               "type":"string"
+            },
+            "u_country_code":{
+               "type":"string"
+            },
+            "u_set_to_callers_office_location":{
+               "type":"boolean"
+            },
+            "u_state":{
+               "type":"string"
+            },
+            "u_street":{
+               "type":"string"
+            },
+            "u_zip_postal_code":{
+               "type":"string"
+            },
+            "variant":{
+               "type":"string"
             }
-          }
-        },
-        "security": []
+         }
+      },
+      "RITMRequest":{
+         "description":"Model for RitmRequest",
+         "required":[
+            "requested_items"
+         ],
+         "properties":{
+            "requested_items":{
+               "type":"array",
+               "items":{
+                  "$ref":"#/definitions/RIMTRequestdetails"
+               }
+            },
+            "request_number":{
+               "type":"string"
+            }
+         }
+      },
+      "REQResponse":{
+         "description":"Model for ReqResponse",
+         "required":[
+            "result"
+         ],
+         "properties":{
+            "result":{
+               "$ref":"#/definitions/REQResponseResult"
+            }
+         }
+      },
+      "REQRequest":{
+         "description":"Model for ReqRequest",
+         "required":[
+            "request"
+         ],
+         "properties":{
+            "request":{
+               "$ref":"#/definitions/REQRequestDetails"
+            }
+         }
+      },
+      "REQRequestDetails":{
+         "description":"Model for Request",
+         "required":[
+            "description"
+         ],
+         "properties":{
+            "description":{
+               "type":"string"
+            },
+            "requested_for":{
+               "type":"string"
+            },
+            "short_description":{
+               "type":"string"
+            }
+         }
       }
-    }
-  },
-  "definitions": {
-    "ResultRitm": {
-      "description": "Model for Result",
-      "required": [
-        "request"
-      ],
-      "properties": {
-        "request": {
-          "type": "string",
-          "x-example": ""
-        },
-        "requested_items": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "x-example": ""
-        }
+   },
+   "securityDefinitions":{
+      
+   },
+   "security":[
+      
+   ],
+   "tags":[
+      {
+         "name":"Web",
+         "description":"Operations about Web"
       }
-    },
-    "RitmResponseBody": {
-      "description": "Model for RitmResponseBody",
-      "required": [
-        "result"
-      ],
-      "properties": {
-        "result": {
-          "$ref": "#/definitions/ResultRitm",
-          "x-example": ""
-        }
-      }
-    },
-    "RitmRequestBody": {
-      "description": "Model for RitmRequestBody",
-      "required": [
-        "requested_items"
-      ],
-      "properties": {
-        "requested_items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/RequestedItems"
-          },
-          "x-example": ""
-        },
-        "request_number": {
-          "type": "string",
-          "x-example": ""
-        }
-      }
-    },
-    "RequestedItems": {
-      "description": "Model for RequestedItems",
-      "required": [
-        "cat_item"
-      ],
-      "properties": {
-        "cat_item": {
-          "type": "string",
-          "x-example": ""
-        },
-        "company": {
-          "type": "string",
-          "x-example": ""
-        },
-        "item": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "x-example": ""
-        },
-        "preferred_delivery_date": {
-          "type": "string",
-          "x-example": ""
-        },
-        "site": {
-          "type": "string",
-          "x-example": ""
-        },
-        "u_city": {
-          "type": "string",
-          "x-example": ""
-        },
-        "u_country": {
-          "type": "string",
-          "x-example": ""
-        },
-        "u_country_code": {
-          "type": "string",
-          "x-example": ""
-        },
-        "u_set_to_callers_office_loc": {
-          "type": "boolean",
-          "x-example": ""
-        },
-        "u_state": {
-          "type": "string",
-          "x-example": ""
-        },
-        "u_street": {
-          "type": "string",
-          "x-example": ""
-        },
-        "u_zip_postal_code": {
-          "type": "string",
-          "x-example": ""
-        },
-        "variant": {
-          "type": "string",
-          "x-example": ""
-        }
-      }
-    },
-    "ReqResponeBody": {
-      "description": "Model for ReqRespone",
-      "required": [
-        "result"
-      ],
-      "properties": {
-        "result": {
-          "$ref": "#/definitions/ResultRitm",
-          "x-example": ""
-        }
-      }
-    },
-    "Request": {
-      "description": "Model for Request",
-      "required": [
-        "description"
-      ],
-      "properties": {
-        "description": {
-          "type": "string",
-          "x-example": ""
-        },
-        "requested_for": {
-          "type": "string",
-          "x-example": ""
-        },
-        "short_description": {
-          "type": "string",
-          "x-example": ""
-        }
-      }
-    },
-    "ReqRequestBody": {
-      "description": "Model for ReqRequestBody",
-      "required": [
-        "request"
-      ],
-      "properties": {
-        "request": {
-          "$ref": "#/definitions/Request",
-          "x-example": ""
-        }
-      }
-    }
-  },
-  "securityDefinitions": {},
-  "security": [],
-  "tags": [
-    {
-      "name": "Web",
-      "description": "Operations about Web"
-    }
-  ]
+   ]
 }
