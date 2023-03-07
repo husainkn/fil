@@ -15,11 +15,11 @@
 
 @font-face {
   font-family: "TechHub";
-  src: url("../fonts/TechHub.eot");
-  src: url("../fonts/TechHub.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/TechHub.woff2") format("woff2"),
-       url("../fonts/TechHub.woff") format("woff"),
-       url("../fonts/TechHub.ttf") format("truetype"),
+  src: url("../../blob/main/fonts/TechHub.eot?raw=true");
+  src: url("../../blob/main/fonts/TechHub.eot?raw=true&#iefix") format("embedded-opentype"),
+       url("../../blob/main/fonts/TechHub.woff2?raw=true") format("woff2"),
+       url("../../blob/main/fonts/TechHub.woff?raw=true") format("woff"),
+       url("../../blob/main/fonts/TechHub.ttf?raw=true") format("truetype"),
        url("../fonts/TechHub.svg#TechHub") format("svg");
   font-weight: normal;
   font-style: normal;
